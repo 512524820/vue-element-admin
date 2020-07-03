@@ -1,10 +1,12 @@
-
 const tokens = {
   admin: {
     token: 'admin-token'
   },
   editor: {
     token: 'editor-token'
+  },
+  example:{
+    token: 'example-token'
   }
 }
 
@@ -20,7 +22,13 @@ const users = {
     introduction: 'I am an editor',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Normal Editor'
-  }
+  },
+  'example-token': {
+    roles: ['example'],
+    introduction: 'I am an example',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'Normal example'
+  },
 }
 
 module.exports = [

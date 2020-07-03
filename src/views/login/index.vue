@@ -49,11 +49,7 @@
 
       <div style="position:relative">
         <div class="tips">
-          <span>Username : admin</span>
-          <span>Password : any</span>
-        </div>
-        <div class="tips">
-          <span style="margin-right:18px;">Username : editor</span>
+          <span>Username : example</span>
           <span>Password : any</span>
         </div>
 
