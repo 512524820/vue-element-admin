@@ -41,6 +41,15 @@ const exampleRouter = {
       }
     },
     {
+      path: 'parall-table',
+      component: () => import('@/views/table/parall-table'),
+      name: 'ParallTable', // 面包屑展示
+      meta: {
+        title: 'parall-table',
+        roles: ['example']
+      }
+    },
+    {
       path: 'tree',
       component: () => import('@/components/tree/index'),
       name: 'Tree',
