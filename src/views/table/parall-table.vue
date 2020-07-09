@@ -117,14 +117,14 @@
       </el-col>
     </el-row>
 
-    <el-dialog title="详细信息" :visible.sync="dialogFormVisible">
+    <el-dialog :title="titleMessage" :visible.sync="dialogFormVisible">
       <el-form label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
         <el-form-item label="漏洞名称">
           <el-input v-model="temp.title" />
         </el-form-item>
         <el-form-item label="漏洞等级">
           <el-select v-model="temp.level" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in levelOptions" :key="item.key" :value="item.key" label="item.display_name" />
+            <el-option v-for="item in levelOptions" :key="item.key" :value="item.key" :label="item.display_name" />
           </el-select>
         </el-form-item>
         <el-form-item label="作者">
@@ -148,9 +148,9 @@ import { fetchTest } from '@/api/article'
 import Pagination from '@/components/Pagination'
 
 const levelOptions = [
-  { key: '1', display_name: '高危' },
-  { key: '2', display_name: '中危' },
-  { key: '3', display_name: '低危' }
+  { key: 1, display_name: '高危' },
+  { key: 2, display_name: '中危' },
+  { key: 3, display_name: '低危' }
 ]
 
 export default {
@@ -167,6 +167,7 @@ export default {
   },
   data() {
     return {
+      titleMessage: '漏洞详情',
       levelOptions,
       tableData1: {
         listLoading: true,
@@ -209,7 +210,12 @@ export default {
       },
       search: '',
       checklist: [],
-      temp: null,
+      temp: {
+        title: '',
+        level: '',
+        author: '',
+        display_time: ''
+      },
       dialogFormVisible: false
     }
   },

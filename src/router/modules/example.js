@@ -50,6 +50,15 @@ const exampleRouter = {
       }
     },
     {
+      path: 'newtask',
+      component: () => import('@/views/table/newtask'),
+      name: 'NewTask',
+      meta: {
+        title: 'newtask',
+        roles: ['example']
+      }
+    },
+    {
       path: 'tree',
       component: () => import('@/components/tree/index'),
       name: 'Tree',
