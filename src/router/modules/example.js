@@ -52,9 +52,18 @@ const exampleRouter = {
     {
       path: 'newtask',
       component: () => import('@/views/table/newtask'),
-      name: 'NewTask',
+      name: 'newtask',
       meta: {
         title: 'newtask',
+        roles: ['example']
+      }
+    },
+    {
+      path: 'detect',
+      component: () => import('@/views/table/detect'),
+      name: 'detect',
+      meta: {
+        title: 'detect',
         roles: ['example']
       }
     },

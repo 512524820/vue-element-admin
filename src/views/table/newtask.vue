@@ -361,6 +361,9 @@ export default {
       monthAll: monthall()
     }
   },
+  created() {
+    console.log(this.$router.params.userId)
+  },
   computed: {
     sysVisible() {
       if (this.checklist.indexOf('1') >= 0) {
