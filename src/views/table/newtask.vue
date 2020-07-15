@@ -303,7 +303,7 @@ export default {
         }
       },
       checklist: [],
-      radio: '',
+      radio: 1,
       textarea: '',
       data: generateData(),
       value: [],
@@ -361,9 +361,6 @@ export default {
       monthAll: monthall()
     }
   },
-  created() {
-    console.log(this.$router.params.userId)
-  },
   computed: {
     sysVisible() {
       if (this.checklist.indexOf('1') >= 0) {
@@ -380,15 +377,24 @@ export default {
       }
     }
   },
+  created() {
+    if (this.$route.params.allUrl) {
+      let tmp = this.$route.params.allUrl.split(',')
+      this.textarea = tmp.join('\n')
+    }
+  },
   methods: {
     handleCheckList() {
       console.log(this.checklist)
-      if (this.checklist.pop() === '4') {
+      if (this.checklist.slice(-1) == '4') {
         const tmp = ['4']
         this.checklist = tmp
       } else {
         const index = this.checklist.indexOf('4')
-        this.checklist.splice(index, 1)
+        // console.log(index)
+        if (index != -1) {
+          this.checklist.splice(index, 1)
+        }
       }
     },
     handleSuccess(resp, file, filelist) {

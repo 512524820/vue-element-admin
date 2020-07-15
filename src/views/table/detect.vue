@@ -17,13 +17,13 @@
             stripe
             style=""
           >
-            <el-table-column type="selection"/>
+            <el-table-column type="selection" />
             <el-table-column
               label="任务名称"
               width=""
             >
               <template slot-scope="{row}">
-                <el-link @click="handleClickLink(row)">{{ row[1] }}</el-link>
+                <el-link @click="handleClickLink(row[10])">{{ row[1] }}</el-link>
               </template>
             </el-table-column>
             <el-table-column
@@ -31,7 +31,7 @@
               width=""
             >
               <template slot-scope="{row}">
-                <el-link @click="handleClickLink(row)">{{ row[2] }}</el-link>
+                <el-link @click="handleClickLink(row[10])">{{ row[2] }}</el-link>
               </template>
             </el-table-column>
             <el-table-column
@@ -87,7 +87,7 @@
     </el-row>
 
     <el-dialog :title="titleMessage" :visible.sync="dialogFormVisible">
-      <el-form label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
+      <el-form ref="form" label-position="left" label-width="70px" style="">
         <el-table
           v-loading="listLoading"
           :data="rowAll"
@@ -107,7 +107,7 @@
             width=""
           >
             <template slot-scope="{row}">
-              <el-link>{{ row.banner }}</el-link>
+              <span>{{ row.banner }}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -119,12 +119,12 @@
               转成任务
             </el-button>
           </el-col>
-          <el-col :span="3">
-            <el-button type="success" @click="handleClickGroup">
+          <el-col :span="3" :offset="2">
+            <el-button type="success">
               转成资产组
             </el-button>
           </el-col>
-          <el-col :span="3" :offset="15">
+          <el-col :span="3" :offset="10">
             <el-button type="danger" @click="dialogFormVisible = false">
               取消
             </el-button>
@@ -138,17 +138,17 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        customColors: [
-          {color: '#f56c6c', percentage: 20},
-          {color: '#e6a23c', percentage: 40},
-          {color: '#5cb87a', percentage: 60},
-          {color: '#1989fa', percentage: 80},
-          {color: '#6f7ad3', percentage: 100}
-        ],
-        list:
+export default {
+  data() {
+    return {
+      customColors: [
+        { color: '#f56c6c', percentage: 20 },
+        { color: '#e6a23c', percentage: 40 },
+        { color: '#5cb87a', percentage: 60 },
+        { color: '#1989fa', percentage: 80 },
+        { color: '#6f7ad3', percentage: 100 }
+      ],
+      list:
           {
             'aaData': [
               [73, '\u63a2\u6d4b\u76ee\u6807-172.18.253.236', '172.18.253.236', '2020-07-13 14:41:23', '2020-07-13 14:41:48', '25\u79d2', '55-0-0-45', 6, 315, '1-65535', [], 'yangjing', 1],
@@ -930,11 +930,17 @@
     },
     handleClickLink(row) {
       this.rowAll = row
+      console.log(this.rowAll)
       this.dialogFormVisible = true
     },
-    handleClickTask(row) {
-      this.$router.push({ name: 'newtask', params: { userId: 123 }})
-    },
+    handleClickTask() {
+      let tmp = []
+      this.rowAll.forEach((item) => {
+        tmp.push(item.url)
+      })
+      let allUrl = tmp.join()
+      this.$router.push({ name: 'newtask', params: { allUrl: allUrl }})
+    }
   }
 }
 </script>
