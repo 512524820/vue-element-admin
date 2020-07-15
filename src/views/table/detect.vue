@@ -929,16 +929,24 @@ export default {
       return parseInt(row[6].split('-')[0])
     },
     handleClickLink(row) {
+      if (row.length == 0) {
+        this.$notify({
+          title: '提示',
+          message: '未探测到站点',
+          type: 'warning',
+          duration: 2000
+        })
+        return
+      }
       this.rowAll = row
-      console.log(this.rowAll)
       this.dialogFormVisible = true
     },
     handleClickTask() {
-      let tmp = []
+      const tmp = []
       this.rowAll.forEach((item) => {
         tmp.push(item.url)
       })
-      let allUrl = tmp.join()
+      const allUrl = tmp.join()
       this.$router.push({ name: 'newtask', params: { allUrl: allUrl }})
     }
   }

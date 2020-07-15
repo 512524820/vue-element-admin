@@ -379,7 +379,7 @@ export default {
   },
   created() {
     if (this.$route.params.allUrl) {
-      let tmp = this.$route.params.allUrl.split(',')
+      const tmp = this.$route.params.allUrl.split(',')
       this.textarea = tmp.join('\n')
     }
   },
