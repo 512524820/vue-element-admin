@@ -62,17 +62,23 @@
         </el-col>
         <el-col :span="6" />
       </el-row>
+      <el-row>
+        <select-super  v-model="input2" :selectList="osList" searchValue="操作系统" @selects="selects"></select-super>
+      </el-row>
     </el-form>
 
   </div>
 </template>
 
 <script>
+import SelectSuper from '@/components/SelectSuper'
 export default {
+  components: { SelectSuper },
   name: 'Asset',
   data() {
     return {
-      input2: '',
+      input1: '',
+      input2: 'redhat',
       input3: '',
       input4: '',
       input1: '',
@@ -116,6 +122,11 @@ export default {
     },
     handleDrop(val){
       this.dropFlag = val;
+    },
+    selects(val){
+      console.log(val);
+      console.log(this.input2);
+      // this.input2 = val;
     },
   }
 }
