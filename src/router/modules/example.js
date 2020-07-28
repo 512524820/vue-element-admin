@@ -68,6 +68,15 @@ const exampleRouter = {
       }
     },
     {
+      path: 'asset',
+      component: () => import('@/views/table/asset'),
+      name: 'asset',
+      meta: {
+        title: 'asset',
+        roles: ['example']
+      }
+    },
+    {
       path: 'tree',
       component: () => import('@/components/tree/index'),
       name: 'Tree',
