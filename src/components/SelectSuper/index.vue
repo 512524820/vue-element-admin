@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-tag class="tag" type="info">{{searchValue}}</el-tag>
-  <el-select v-model="value" @input="$emit('selects', value)" placeholder="请选择">
+  <el-select  filterable v-model="value" @input="$emit('update:selects', value)" placeholder="请选择">
     <el-option
       v-for="item in selectList"
       :key="item.name"
@@ -18,7 +18,7 @@
     props: {
       selectList: {
         required: true,
-        type: Object
+        type: Array
       },
       searchValue: {
         required: true,
@@ -43,6 +43,7 @@
 
 <style scoped>
 .el-tag{
+  width: 110px;
     height: 35px;
     position: relative;
     top: -4px;
@@ -52,6 +53,7 @@
     border-bottom-right-radius: 0px;
 }
 .el-select{
+  width: 250px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
